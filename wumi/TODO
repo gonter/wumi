@@ -1,0 +1,11 @@
+
+REJECT MAILS WITH SPF 'fail' in any case!!
+
+see what to do with second recepient!!!
+
+-) Configfile should become an optional commandline option
+-) Change logging to the logger module
+-) Commandline switch for different logfile
+-) review and cleanup header generation
+-) Date in startup message, and version of Mainfile
+-) quit if source file changed (daemontools!)

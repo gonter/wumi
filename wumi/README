@@ -1,0 +1,26 @@
+WUMI
+
+A sendmail Milter written in Python. It calls an external virus
+scanner and blocks email attachments of certain kinds. Thus your
+Mailserver does not have to send nonsense bounces anymore.
+
+The software is a sendmail milter, written in python. It is
+plugin - enabled and tests the mail content after the remote
+server finished the SMTP "DATA" step. At this place wumi is able
+to reject a mail. The server has seen it, but refuses to deliver
+it. Thus we do not need to send bounces (to faked adresses!) nor
+do out users have to deal with nonsense mails (like "our virus
+scanner removed the attachment" or the like).
+
+We at wu-wien.ac.at plan to include a bayes-based plugin in this
+software, so we will be able to reject spam *during the initial
+smtp connection*.
+
+The software is in production use at wu-wien.ac.at, you can test
+the behavior by e.g. sending an ".exe" attachment to
+postmaster@wu-wien.ac.at. Our mailserver will block this, and you
+will see how the software works.
+
+Have fun,
+  Georg Graf
+

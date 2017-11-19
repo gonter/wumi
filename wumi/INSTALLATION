@@ -1,0 +1,71 @@
+Check Run Dependencies:
+-----------------------
+
+-) A stable python installation, currently I recommend python 2.2
+   or python 2.3.4
+
+-) The python-milter python module as python interface to
+   sendmails libmilter: <http://bmsi.com/python/>
+
+-) McAffees "uvscan" Virus Scanner from "Networks Associates". A
+   one-host license is about $8 per year. It is available for most
+   contemporary Unix Platforms, it runs at least on:
+
+   FreeBSD          
+   HP-UX            
+   IBM AIX          
+   Linux            
+   SCO OpenServer
+   Sun Solaris   
+   Linux/390   
+
+-) agettok is a Program used at our place to print passwords -
+   The password should be the same for all the milterservers
+   collaborating in one domain. It can easily be replaced by agettok
+   of the distribution. (A simple echo "passwd")
+
+Not absolutely necessary, but prooven to very practical and stable:
+
+-) Dan Bernsteins wunderful daemontools package, please go and
+   find it at <http://cr.yp.to/daemontools.html> if you cannot find
+   a packaged Version from your OS vendor.
+
+This is our script:
+
+   #!/bin/sh
+   exec 2>&1
+   exec setuidgid smmsp envdir env /etc/mail/wumi.py
+
+
+Configure daemontools:
+----------------------
+
+-) the run script and the env dir contains all you need. Without
+   daemontools you would have to setenv (or export) the values from
+   env, each file is one environment variable. The script does not
+   detach from the controlling terminal or parent process.
+
+-) Select the socket to listen on and put it into the
+   MI_UVSCAN_SOCKET environment variable, values are like
+   "inet:25252@charon.wu-wien.ac.at".
+
+-) Configure sendmail, we use a line like this in the .mc file:
+   INPUT_MAIL_FILTER(`uvscanmilter', `S=inet:25252@charon.wu-wien.ac.at, F=T,T=C:9m;S:9m;R:9m;E:9m')
+
+Run it:
+-------
+
+-) Start the Wumi and the sendmail and enjoy: No Viruses and no
+   dangerous attachments anymore.
+
+Hint:
+-----
+
+-) We have success running the milter behind a balance proxy
+   <http://sourceforge.net/projects/balance>, in order to distribute
+   the load.
+
+Enjoy!
+
+<mailto:georg.graf@wu-wien.ac.at>
+

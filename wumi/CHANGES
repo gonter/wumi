@@ -1,0 +1,15 @@
+2004-10
+-) Parse .zip files for blocked attachments
+
+2004-05-28
+-) Implement dsbls
+-) only _one_ rblcheck per session
+
+2004-05-27
+-) setting featurevector in envrcpt, and issue 4xx Errors if featuresets are not identical
+-) Change all mi_uvscan occurences to wumi
+
+2004-05-18
+-) Make the X-WU-uvcan headername configurable.
+-) Make the List of blocked attachment names configurable.
+-) __cmp__ for featurevectors

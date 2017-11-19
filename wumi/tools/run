@@ -1,0 +1,4 @@
+#!/bin/sh
+exec 2>&1
+exec envdir /usr/local/service/wumi/env \
+setuidgid smmsp /etc/mail/wumi.py

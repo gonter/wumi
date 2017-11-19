@@ -1,0 +1,33 @@
+[misc]
+filtername = spambayes
+socketname = inet:3333@localhost
+maxload = 10
+eom_plugins = spambayes
+envrcpt_plugins = validsender
+seenheader = X-spambayes-below-max
+
+[blacklist]
+blacklists = dsbl,spamcop,spamhaus
+
+[attachblock]
+noattach = 386,bat,class,cmd,com,cpl,dll,dot,drv,exe,hta,jar,jbs,js,lnk,pif,rar,reg,scr,sys,vbs,vxd,wsc,wsf,ws
+policyurl = http://www.wu-wien.ac.at/zid/information/rechtl/attach
+add_x_header = yes
+
+[spamhaus]
+showcgi = http://www.spamhaus.org/query/bl?ip=
+domain = spamhaus.nospam.wunet.at
+add_x_header = yes
+blockmail = no
+
+[dsbl]
+showcgi = http://dsbl.org/listing?
+domain = dsbl.nospam.wunet.at
+add_x_header = yes
+blockmail = no
+
+[spamcop]
+showcgi = http://www.spamcop.net/bl.shtml?
+domain = spamcop.nospam.wunet.at
+add_x_header = yes
+blockmail = no

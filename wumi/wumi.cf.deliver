@@ -1,0 +1,14 @@
+[misc]
+filtername = wumi
+socketname = inet:25252@fsme
+maxload = 10
+eom_plugins = attachblock,kolab
+seenheader = X-WU-wumi-status
+
+[attachblock]
+noattach = 386,bat,class,cmd,com,cpl,dll,dot,drv,exe,hta,jar,jbs,js,lnk,pif,rar,reg,scr,sys,vbs,vxd,wsc,wsf,ws
+policyurl = http://www.wu-wien.ac.at/zid/information/rechtl/attach
+add_x_header = no
+
+[kolab]
+add_false_header = no
